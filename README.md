@@ -8,24 +8,34 @@
 
 ---
 
-# Immutable X Examples
+# Create sell orders in bulk
 
-## Introduction
+This repo will help you create sell orders in bulk.
 
-This repository contains example scripts for interacting with Immutable X APIs. 
+## Steps
 
-## Docs
+### 1. Install libraries
 
-* [Onboarding (Self Service)](docs/onboarding.md) 
-* [Administration](docs/administration.md) 
-* [Public-interfaces](docs/public-interfaces.md) 
-* [Minting Assets](docs/minting-assets.md)
-* [Wallet](docs/wallet.md)
+```sh
+npm install
+```
 
-## License
+### 2. Update `.env` file
 
-Immutable Examples repository is distributed under the terms of the [Apache License (Version 2.0)](LICENSE).
+Please enter values for the following fields in the `.env` file:
 
-## Contributing
-Please check [contributing guidelines](CONTRIBUTING.md) to learn how to help this project.
-# sell-orders-workflow
+* `OWNER_ACCOUNT_PRIVATE_KEY`: Private key of the wallet which owns all the minted NFTs that you are trying to bulk list
+* `COLLECTION_CONTRACT_ADDRESS`: Collection address (0x....)
+* `COLLECTION_PROJECT_ID`: Use this link to find - https://api.ropsten.x.immutable.com/v1/collections/<COLLECTION_CONTRACT_ADDRESS>
+* `DEPLOYER_ETH_WALLET`: Wallet address of Cubix test wallet (on which contract is deployed)
+
+
+### 3. Run the bulk sell order command
+```sh
+# CLI 
+npm run sell-order -- -f <from_private_key> -n <token_address> -i <token_id> -a <sale_amount>  -b <bulk sell order create> 
+
+
+# Example
+npm run sell-order -- -f <please_enter_your_own_private_key> -n 0x461d6816e4cf76ff09be3793c637a094c6ec7fd4 -i 1 -a 10000000000000000 -b 3
+```
